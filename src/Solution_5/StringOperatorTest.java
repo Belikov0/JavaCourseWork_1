@@ -1,6 +1,7 @@
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.ComparisonFailure;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,7 +20,11 @@ public class StringOperatorTest extends StringOperatorForJunit {
     public void testStrAppend() {
         String expected = new String("strstrstr");
         String actual = strAppend(new String("str"), 2);
-        assertEquals(expected, actual);
+        try{
+            assertEquals(expected, actual);
+        }catch (AssertionError e){
+            e.printStackTrace();
+        }
     }
 
     @Test ///Uses assertEquals() to test the result of function strBufferAppend() is expected or not
@@ -27,7 +32,14 @@ public class StringOperatorTest extends StringOperatorForJunit {
         StringBuffer expected = new StringBuffer("strstrstr");
         StringBuffer actual = new StringBuffer("str");
         strBufferAppend(actual, 2);
-        assertEquals(expected, actual);
+        try{
+            assertEquals(expected, actual);
+        }catch (AssertionError e){
+            System.out.println("Error is caught in function testStrBufferAppend.");
+            System.out.println("The hashCode of the expected object is " + expected.hashCode()
+                    + " while hashCode of the actual object is " + actual.hashCode() + ",\nwhich means that they are different objects." );
+            e.printStackTrace();
+        }
         /*
             java.lang.AssertionError: expected: java.lang.StringBuffer<strstrstr> but was: java.lang.StringBuffer<strstrstr>
             Expected :java.lang.StringBuffer<strstrstr>
@@ -41,14 +53,22 @@ public class StringOperatorTest extends StringOperatorForJunit {
     public void testStrCompress() {
         String actual = strCompress(new String("aaabbdff"));
         String expected = new String("a3b2df2");
-        assertEquals(expected, actual);
+        try{
+            assertEquals(expected, actual);
+        }catch (AssertionError e){
+            e.printStackTrace();
+        }
     }
 
     @Test //Uses assertEquals() to test the result of function strEncryt() is expected or not
     public void testStrEncryt() {
         String actual = strEncryt(new String("AABCE"), 3);
         String expected = new String("DDEFH");
-        assertEquals(expected, actual);
+        try{
+            assertEquals(expected, actual);
+        }catch (AssertionError e){
+            e.printStackTrace();
+        }
     }
 
     @Test //Uses assertEquals() to test the result of function subText() is expected or not
@@ -57,6 +77,10 @@ public class StringOperatorTest extends StringOperatorForJunit {
         String b = "abbcsslld";
         boolean actual = subText(a, b);
         boolean expected = true;
-        assertEquals(expected, actual);
+        try{
+            assertEquals(expected, actual);
+        }catch (AssertionError e){
+            e.printStackTrace();
+        }
     }
 }

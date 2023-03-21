@@ -64,6 +64,8 @@
 
 ​	**代码运行结果：(StringBuffer类是可变类型，两个变量指向的是不同的物理空间)**
 
+​	**截图中已经处理了$testStrBufferAppend$抛出的异常并且在前面输出了抛出异常的原因**
+
 - ![image_Solution_5](pics\image_Solution_5.png)
 
 ### 6.Library
